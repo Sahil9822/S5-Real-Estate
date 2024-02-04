@@ -17,6 +17,7 @@ export default function CreateListing() {
     imageUrls: [],
     name: '',
     description: '',
+    vlink: '',
     address: '',
     type: 'rent',
     bedrooms: 1,
@@ -211,6 +212,7 @@ export default function CreateListing() {
         </div>
       </div>
       <div className='flex flex-col flex-1 gap-4'>
+        <input type='text' placeholder='Video link' className='border p-3 rounded-lg' id='vlink' required onChange={handleChange} value={formData.vlink}/>
         <p className='font-semibold'>Images:<span className='font-normal text-gray-600 ml-2'>The first image will be the cover (max 6)</span></p>
         <div className='flex gap-4'>
           <input onChange={(e) => setFiles(e.target.files)} className='p-3 border border-gray-300 rounded w-full' type='file' id='images' accept='image/*' multiple/>
