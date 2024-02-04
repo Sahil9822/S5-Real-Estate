@@ -7,6 +7,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import { FaBath, FaBed, FaChair, FaMapMarkerAlt, FaParking, FaShare, FaVideo } from 'react-icons/fa';
 import Contact from '../components/Contact';
+import { Link } from "react-router-dom";
 
 export default function Listing() {
   SwiperCore.use([Navigation]);
@@ -57,17 +58,18 @@ export default function Listing() {
           <FaShare className='text-slate-500' onClick={() => {navigator.clipboard.writeText(window.location.href);
           setCopied(true);
           setTimeout(() => {
-            setCopied(false); }, 2000); }}/>
+          setCopied(false); }, 2000); }}/>
         </div>
-      <div className='fixed top-[21%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
-        <Link to={listing.vlink} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-blue-800 font-bold hover:underline">
-          <FaVideo className='text-slate-500' onClick={() => {
-      navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setCopied(false);
-    }}/>
-      </Link>
-    </div>
+        <div className='fixed top-[21%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
+          <Link to={listing.vlink} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-blue-800 font-bold hover:underline">
+            <FaVideo className='text-slate-500' onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              setCopied(true);
+              setCopied(false);
+            }}/>
+          </Link>
+        </div>
+
         {copied && (<p className='fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2'>Link copied!</p>)}
         <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
           <p className='text-2xl font-semibold'>
