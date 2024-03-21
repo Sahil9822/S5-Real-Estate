@@ -177,9 +177,9 @@ export default function Profile() {
             ''
         )}
       </p>
-      <input type='text' placeholder='username' defaultValue={currentUser.username} id='username' className='border p-3 rounded-lg' onChange={handleChange}/>
-      <input type='email' placeholder='email' id='email' defaultValue={currentUser.email} className='border p-3 rounded-lg' onChange={handleChange}/>
-      <input type='password' placeholder='password' onChange={handleChange} id='password' className='border p-3 rounded-lg'/>
+      <input type='text' placeholder='username' defaultValue={currentUser.username} id='username' className='border p-3 rounded-lg text-gray-500' onChange={handleChange}/>
+      <input type='email' placeholder='email' id='email' defaultValue={currentUser.email} className='border p-3 rounded-lg text-gray-500' onChange={handleChange}/>
+      <input type='password' placeholder='password' onChange={handleChange} id='password' className='border p-3 rounded-lg text-gray-500'/>
       <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Loading...' : 'Update'}</button>
       <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={'/create-listing'}>Create Listing</Link>
     </form>
