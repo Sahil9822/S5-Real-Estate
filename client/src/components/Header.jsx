@@ -44,6 +44,12 @@ export default function Header() {
       <Button className='w-12 h-10 lg:hidden' color='gray' pill>
         <AiOutlineSearch />
       </Button>
+      <div className='flex gap-2 md:order-2'>
+        <Button className='w-12 h-10 hidden sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
+          {theme === 'light' ? <FaSun /> : <FaMoon />}
+        </Button>
+        <Navbar.Toggle />
+      </div>
       <Navbar.Collapse>
         <Navbar.Link active={path === '/'} as={'div'}>
           <Link to='/'>Home</Link>
@@ -56,21 +62,11 @@ export default function Header() {
             {currentUser ? (
             <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile'/>
             ) : (
-            <li className='text-slate-500 hover:underline'> Sign in</li>
+            <li className=' text-slate-500 hover:underline'> Sign in</li>
             )}
           </Link>
         </Navbar.Link>
       </Navbar.Collapse>
-      <div className='flex gap-2 md:order-2'>
-      <Button
-          className='w-12 h-10 hidden sm:inline'
-          color='gray'
-          pill
-          onClick={() => dispatch(toggleTheme())}
-        >
-          {theme === 'light' ? <FaSun /> : <FaMoon />}
-        </Button>
-      </div>
     </Navbar>
   );
 }
