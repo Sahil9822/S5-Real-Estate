@@ -222,6 +222,7 @@ export default function CreateListing() {
       </div>
       <div className='flex flex-col flex-1 gap-4'>
         <input type='text' placeholder='Video link' className='border p-3 rounded-lg text-gray-500' id='vlink' required onChange={handleChange} value={formData.vlink}/>
+        <p>Need help creating video : <a href='https://www.flexclip.com/create/real-estate-video.html' target='_blank' rel='noopener noreferrer' className="text-xs sm:text-sm text-blue-800 font-bold hover:underline">Click Here...</a></p>
         <p className='font-semibold'>Images:<span className='font-normal text-gray-500 ml-2'>The first image will be the cover (max 6)</span></p>
         <div className='flex gap-4'>
           <input onChange={(e) => setFiles(e.target.files)} className='p-3 border border-gray-300 rounded w-full' type='file' id='images' accept='image/*'multiple/>
