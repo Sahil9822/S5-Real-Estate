@@ -1,9 +1,8 @@
-import { Button, Navbar, TextInput } from 'flowbite-react';
+import { Button, Navbar } from 'flowbite-react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
 import { toggleTheme } from '../redux/theme/themeSlice';
 
 export default function Header() {
@@ -38,8 +37,8 @@ export default function Header() {
         <span className='text-slate-600'>Real</span>
         <span className='text-slate-700'>Estate</span>
       </Link>
-      <form onSubmit={handleSubmit}>
-        <TextInput type='text' placeholder='Search...' rightIcon={AiOutlineSearch} className='hidden lg:inline' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+      <form onSubmit={handleSubmit} className='flex items-center'>
+        <input type='text' placeholder='Search...' className='lg:inline rounded-lg' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
       </form>
       <Button className='w-12 h-10 lg:hidden' color='gray' pill>
         <AiOutlineSearch />
