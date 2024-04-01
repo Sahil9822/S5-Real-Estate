@@ -1,5 +1,5 @@
-import { Button, Navbar } from 'flowbite-react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { Button, Navbar} from 'flowbite-react';
+import { FaMoon, FaSun} from 'react-icons/fa';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -31,7 +31,7 @@ export default function Header() {
   }, [location.search]);
 
   return (
-    <Navbar className='border-b-2 bg-slate-200'>
+    <Navbar className='border-b-2 bg-slate-200 shadow-md'>
       <Link to='/' className='font-bold text-sm sm:text-xl flex flex-wrap'>
         <span className='text-slate-500'>S5</span>
         <span className='text-slate-600'>Real</span>
@@ -40,9 +40,6 @@ export default function Header() {
       <form onSubmit={handleSubmit} className='flex items-center'>
         <input type='text' placeholder='Search...' className='lg:inline rounded-lg' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
       </form>
-      <Button className='w-12 h-10 lg:hidden' color='gray' pill>
-        <AiOutlineSearch />
-      </Button>
       <div className='flex gap-2 md:order-2'>
         <Button className='w-12 h-10 hidden sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
           {theme === 'light' ? <FaSun /> : <FaMoon />}
