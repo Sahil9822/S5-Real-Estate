@@ -38,7 +38,7 @@ export default function Header() {
         <span className='text-slate-700'>Estate</span>
       </Link>
       <form onSubmit={handleSubmit} className='flex items-center'>
-        <input type='text' placeholder='Search...' className='lg:inline rounded-lg w-24 sm:w-64 text-grey-700' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+        <input type='text' placeholder='Search...' className='lg:inline rounded-lg w-24 sm:w-64' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
       </form>
       <div className='flex gap-2 md:order-2'>
         <Button className='w-12 h-10 sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
