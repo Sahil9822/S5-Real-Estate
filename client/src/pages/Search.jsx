@@ -133,7 +133,7 @@ export default function Search() {
       <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
         <div className='flex items-center gap-2'>
           <label className='whitespace-nowrap font-semibold'>Search Term:</label>
-          <input type='text' id='searchTerm' placeholder='Search...' className='border rounded-lg p-3 w-full text-gray-500' value={sidebardata.searchTerm} onChange={handleChange}/>
+          <input type='text' id='searchTerm' placeholder='Search...' className='border rounded-lg p-3 w-full text-gray-600' value={sidebardata.searchTerm} onChange={handleChange}/>
         </div>
         <div className='flex gap-2 flex-wrap items-center'>
           <label className='font-semibold'>Type:</label>
