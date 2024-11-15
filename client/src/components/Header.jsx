@@ -1,12 +1,19 @@
-import { FaSearch } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Button, Navbar} from 'flowbite-react';
+import { FaMoon, FaSun} from 'react-icons/fa';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { toggleTheme } from '../redux/theme/themeSlice';
 
 export default function Header() {
+  const path = useLocation().pathname;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { theme } = useSelector((state) => state.theme);
   const { currentUser } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
@@ -22,32 +29,40 @@ export default function Header() {
       setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
+
   return (
-  <header className='bg-slate-200 shadow-md'>
-    <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
-      <Link to='/'>
-        <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
-          <span className='text-slate-500'>S5</span>
-          <span className='text-slate-600'>Real</span>
-          <span className='text-slate-700'>Estate</span>
-        </h1>
+    <Navbar className='border-b-2 bg-slate-200 shadow-md'>
+      <Link to='/' className='font-bold text-sm sm:text-xl flex flex-wrap'>
+        <span className='text-slate-500'>S5</span>
+        <span className='text-slate-600'>Real</span>
+        <span className='text-slate-700'>Estate</span>
       </Link>
-      <form onSubmit={handleSubmit} className='bg-slate-100 p-3 rounded-lg flex items-center'>
-        <input type='text' placeholder='Search...' className='bg-transparent focus:outline-none w-24 sm:w-64' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
-        <button><FaSearch className='text-slate-600' /></button>
+      <form onSubmit={handleSubmit} className='flex items-center'>
+        <input type='text' placeholder='Search...' className='lg:inline rounded-lg w-24 sm:w-64 text-gray-600' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
       </form>
-      <ul className='flex gap-4'>
-        <Link to='/'><li className='hidden sm:inline text-slate-700 hover:underline'>Home</li></Link>
-        <Link to='/about'><li className='hidden sm:inline text-slate-700 hover:underline'>About</li></Link>
-        <Link to='/profile'>
-          {currentUser ? (
-          <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile'/>
-          ) : (
-          <li className=' text-slate-700 hover:underline'> Sign in</li>
-          )}
-        </Link>
-      </ul>
-    </div>
-  </header>
+      <div className='flex gap-2 md:order-2'>
+        <Button className='w-12 h-10 sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
+          {theme === 'light' ? <FaSun /> : <FaMoon />}
+        </Button>
+        <Navbar.Toggle />
+      </div>
+      <Navbar.Collapse>
+        <Navbar.Link active={path === '/'} as={'div'}>
+          <Link to='/'>Home</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === '/about'} as={'div'}>
+          <Link to='/about'>About</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === '/profile'} as={'div'}>
+          <Link to='/profile'>
+            {currentUser ? (
+            <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile'/>
+            ) : (
+            <li className=' text-slate-500 hover:underline'> Sign in</li>
+            )}
+          </Link>
+        </Navbar.Link>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }

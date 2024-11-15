@@ -54,6 +54,10 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    vlink: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
